@@ -1,0 +1,34 @@
+﻿@{
+    var products = ViewBag.Products as IEnumerable<ProductEntity>;
+    var customers = ViewBag.Customers as IEnumerable<CustomerEntity>;
+}
+<h2>Products</h2>
+<table>
+    <thead><tr><th>Name</th><th>Price</th><th>Image</th></tr></thead>
+    <tbody>
+        @foreach (var p in products ?? Enumerable.Empty<ProductEntity>())
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(p.ImageUrl))
+                    {
+                        <img src="@p.ImageUrl" width="120" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Customers</h2>
+<table>
+    <thead><tr><th>Name</th><th>Email</th></tr></thead>
+    <tbody>
+        @foreach (var c in customers ?? Enumerable.Empty<CustomerEntity>())
+        {
+            <tr><td>@c.FullName</td><td>@c.Email</td></tr>
+        }
+    </tbody>
+</table>

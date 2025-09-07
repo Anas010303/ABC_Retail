@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Azure File Storage";
+    var files = ViewBag.Files as IEnumerable<string>;
+}
+
+<h2>Azure File Storage</h2>
+
+@if (files != null && files.Any())
+{
+    <ul>
+        @foreach (var f in files)
+        {
+            <li>@f</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No files found in the directory.</p>
+}
+    

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Azure Queues";
+    var messages = ViewBag.Messages as IEnumerable<dynamic>; // or QueueMessage[]
+}
+
+<h2>Azure Queue Storage</h2>
+
+@if (messages != null && messages.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Message Id</th>
+                <th>Content</th>
+                <th>Inserted On</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in messages)
+            {
+                <tr>
+                    <td>@m.MessageId</td>
+                    <td>@m.MessageText</td>
+                    <td>@m.InsertedOn</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No queue messages found.</p>
+}

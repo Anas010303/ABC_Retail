@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Azure Blobs";
+    var blobs = ViewBag.Blobs as IEnumerable<string>;
+}
+
+<h2>Azure Blob Storage</h2>
+
+@if (blobs != null && blobs.Any())
+{
+    <ul>
+        @foreach (var blob in blobs)
+        {
+            <li>@blob</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No blobs found.</p>
+}

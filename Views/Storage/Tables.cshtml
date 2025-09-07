@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "Azure Tables";
+    var customers = ViewBag.Customers as IEnumerable<dynamic>;
+    var products = ViewBag.Products as IEnumerable<dynamic>;
+}
+
+<h2>Azure Tables</h2>
+
+<h3>Customers</h3>
+@if (customers != null && customers.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>PartitionKey</th>
+                <th>RowKey</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in customers)
+            {
+                <tr>
+                    <td>@c.PartitionKey</td>
+                    <td>@c.RowKey</td>
+                    <td>@c.Name</td>
+                    <td>@c.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No customers found.</p>
+}
+
+<h3>Products</h3>
+@if (products != null && products.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>PartitionKey</th>
+                <th>RowKey</th>
+                <th>Product Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in products)
+            {
+                <tr>
+                    <td>@p.PartitionKey</td>
+                    <td>@p.RowKey</td>
+                    <td>@p.ProductName</td>
+                    <td>@p.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No products found.</p>
+}
